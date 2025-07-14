@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <RollingFile name="File" fileName="logs/hippodrome.log"
+                     filePattern="logs/hyppodrome.%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="%d %-5p %c: %m%n"/>
+            <TimeBasedTriggeringPolicy />
+            <DefaultRollerStategy>
+                <Delete basePath="logs" maxDepth="2">
+                    <IfFileName glob="hippodrome.*.log" />
+                    <IfLastModifiedAge age="7d" />
+                </Delete>
+            </DefaultRollerStategy>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="ALL">
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+</Configuration>
